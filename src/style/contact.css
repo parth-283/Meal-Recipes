@@ -1,0 +1,88 @@
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    skyblue !important;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    skyblue !important;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    skyblue !important;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    skyblue !important;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+   color:    skyblue !important;
+}
+
+::placeholder { /* Most modern browsers support this now. */
+   color:    skyblue !important;
+}
+
+.form-control {
+  display: unset !important;
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: unset !important;
+  border-bottom: 1px solid aquamarine !important;
+  color: limegreen !important;
+  box-shadow: none !important;
+}
+
+.card-img-overlay {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-img-overlay {
+  margin-top: 0px;
+}
+
+.contect-card {
+  height: 730px;
+  overflow: hidden;
+}
+
+.card-img {
+  opacity: 0.5;
+}
+
+.contact-img-overlay  > .contact-title {
+  
+  display: flex !important;
+    justify-content: center !important;
+}
+
+.contact-img-overlay > .contact-title > h5{
+    font-size: 38px !important;
+    /* color: lightskyblue; */
+}
+
+.contact-btn{
+    color: aqua !important;
+    width: -webkit-fill-available !important;
+    background-color: transparent !important;
+    border: 2px solid aqua !important;
+}
+
+.contact-img-overlay > hr {
+    margin: 1rem 0;
+    color: inherit;
+    background-color: beige;
+    border: 1px solid lightskyblue;
+    opacity: 0.7;
+}

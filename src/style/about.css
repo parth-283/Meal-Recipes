@@ -1,0 +1,55 @@
+.main-header {
+  border: none !important;
+}
+
+.main-header > img {
+  opacity: 0.5;
+}
+
+.text-content {
+  text-align: center;
+}
+
+.main-img-header {
+  font-family: "Rubik Moonrocks";
+  font-size: 6rem !important;
+  margin-top: 5%;
+  color: aliceblue;
+}
+
+.card-img-col {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-img-col > img {
+  width: 47%;
+  
+}
+
+.card-content-col {
+  display: flex;
+  align-items: center;
+}
+
+.card {
+  align-items: center;
+  border: none !important;
+}
+
+.container {
+  /* border: 1px solid black; */
+  /* box-shadow: 6px 6px azure; */
+}
+
+.card-body > .h5 {
+  font-size: xx-large;
+  font-weight: 400;
+  font-family: inherit;
+}
+
+.card-body > p {
+  font-size: larger;
+  font-weight: 400;
+}

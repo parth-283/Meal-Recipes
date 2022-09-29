@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Alumni+Sans+Inline+One&family=Blaka+Hollow&family=Bungee+Shade&family=Cinzel&family=Creepster&family=Gravitas+One&family=Henny+Penny&family=Knewave&family=Playfair+Display:ital@1&family=Rubik+Moonrocks&family=Rye&display=swap");
+.w-our {
+  width: 100% !important;
+  height: 500px;
+  overflow: hidden;
+}
+
+.card-title-our {
+  font-family: "Playfair Display", serif;
+}
+
+.card-heading {
+  font-family: "Cinzel", serif;
+}
+.parent-div {
+  border: 1px solid black !important;
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.child-div {
+  background-color: #fff;
+  background-position: center center;
+  position: absolute;
+  right: -3px;
+  top: -3px;
+}
