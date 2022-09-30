@@ -1,75 +1,102 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import contact from "../images/DemoRecipe.jpg";
 import "../style/recipe.css";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import { Col, Figure, Row } from "react-bootstrap";
+import { useParams } from "react-router";
+import { recipeGet } from "../service/RecipeGet";
 
 function Recipe1() {
+  const [recipeData, setRecipeData] = useState();
+  const { recipeId } = useParams();
+  const recipe = recipeData?.items?.filter((item) => item?._id == recipeId);
+
+  useEffect(() => {
+    recipeGet(setRecipeData);
+  }, []);
+
+  console.log(recipe);
+
   return (
     <>
-      <div className="container ">
-        <div className="card mb-3 ">
-          <div className="w-our">
-            <img src={contact} className="card-img-top" alt="..." />
-          </div>
-          <div className="card-body">
-            <h2 className="card-title card-title-our">
-              Sitafal Basundi Recipe1
-            </h2>
-            <p className="my-3">
-              <span>🍴 2 Servings</span> <span>🕛 15 Minutes</span>
-            </p>
-            <p className="card-text my-5">
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
-            </p>
-            <div>
-              <div class="d-flex mt-5">
-                <div class="p-2 w-25 border border-2 border-dark parent-div">
-                  <div className="child-div">🌿</div>
-                  <div>
-                    <h2 className="card-heading">Ingredients</h2>
+      {recipe && (
+        <div>
+          <Card>
+            <Card.Body style={{ width: "57%" }}>
+              <Card.Title className="card-title-our">
+                {recipe[0]?.name}
+              </Card.Title>
+              <Card.Text>
+                <Card.Link href="#1">3 Ratings</Card.Link> |
+                <Card.Link href="#2">3 Reviews</Card.Link>
+              </Card.Text>
+              <Card.Text>{recipe[0]?.description}</Card.Text>
+              <Figure>
+                <Figure.Image
+                  width={50}
+                  height={50}
+                  alt="171x180"
+                  className="rounded-circle"
+                  src={recipe[0]?.image}
+                />
+                <Figure.Caption className="ms-2">
+                  Recipe by
+                  <Card.Link href="#1">{recipe[0]?.chefName}</Card.Link>
+                </Figure.Caption>
+              </Figure>
+            </Card.Body>
+            <Row style={{ width: "57%" }}>
+              <Col xs={12} md={9}>
+                <Card.Img variant="top" src={recipe[0]?.image} />
+              </Col>
+              <Col xs={6} md={3} className="mx-auto mt-1">
+                <div className="time-border parent-div">
+                  <div className="child-div" style={{ fontSize: "25px" }}>
+                    {/* <i className="bi bi-stopwatch-fill"></i> */}
+                    <img
+                      src="https://img.icons8.com/glyph-neue/64/FAB005/stopwatch.png"
+                      alt="icon"
+                    />
                   </div>
-                  <div>
-                    <ol>
-                      <li>1 Litre Milk</li>
-                      <li> Sitafal Pulp</li>
-                      <li>Dry fruits to Garnish</li>
-                    </ol>
-                  </div>
+                  <p>
+                    <b>Prep:</b> {recipe[0]?.prep} mins
+                  </p>
+                  <p>
+                    <b>Cook:</b> {recipe[0]?.cookMins} mins
+                  </p>
+                  <p>
+                    <b>Additional:</b> {recipe[0]?.additionalMins} mins
+                  </p>
+                  <p>
+                    <b>Total:</b> {recipe[0]?.totalTime} mins
+                  </p>
+                  <p>
+                    <b>Servings:</b> {recipe[0]?.servings}
+                  </p>
+                  <p>
+                    <b>Yield:</b> {recipe[0]?.yield} servings
+                  </p>
+                  <p style={{ textAlign: "center" }}>
+                    <Card.Link href="#1">Nutrition Info</Card.Link>
+                  </p>
                 </div>
-                <div class="ms-5 p-2">
-                  <div>
-                    <h2 className="card-heading">introduction</h2>
-                  </div>
-                  <div>
-                    <ol>
-                      <li>
-                        Pour 1 litre milk in a pan. Boil and reduce it on low
-                        flame so it turns thick.
-                      </li>
-                      <li> Then let it cool for sometime.</li>
-                      <li>
-                        Use seed sitafal or custard apple. Scoop out the pulp
-                        from fresh sitafal and add the pulp to the cooled milk
-                        and mix it well.
-                      </li>
-                      <li>
-                        Pour it in a glass and garnish it with dryfruits and
-                        your Sitafal Basundi is ready to serve.
-                      </li>
-                    </ol>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <p className="card-text">
-              <small className="text-muted">
-                Key Ingredients: Milk, Sitafal Pulp, Dry fruits to Garnish
-              </small>
-            </p>
-          </div>
+                <div></div>
+              </Col>
+            </Row>
+
+            <Card.Body style={{ width: "57%" }}>
+              <hr />
+              <Card.Title className="card-heading">Ingredients</Card.Title>
+              <Card.Text>
+                {recipe[0]?.ingredients.map((item) => {
+                  return <li>{item}</li>;
+                })}
+              </Card.Text>
+            </Card.Body>
+          </Card>
         </div>
-      </div>
+      )}
     </>
   );
 }

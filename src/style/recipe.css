@@ -6,17 +6,15 @@
 }
 
 .card-title-our {
-  font-family: "Playfair Display", serif;
+  font-family: "Playfair Display", serif !important;
 }
 
 .card-heading {
-  font-family: "Cinzel", serif;
+  font-family: "Cinzel", serif !important;
 }
 .parent-div {
   border: 1px solid black !important;
   position: relative;
-  width: 200px;
-  height: 200px;
 }
 
 .child-div {
@@ -24,5 +22,32 @@
   background-position: center center;
   position: absolute;
   right: -3px;
-  top: -3px;
+  top: -9px;
+}
+
+.child-div>img{
+  width: 40px;
+}
+
+.figure {
+  display: flex !important;
+  align-items: center;
+}
+
+figure > img {
+  width: 50px !important;
+  height: 50px !important;
+}
+
+.time-border {
+  border: 2px solid rgba(0, 0, 0, 0.15) !important;
+  padding: 20px;
+}
+
+.card-body-width{
+  width: -webkit-fill-available;
+}
+
+.card-border{
+  box-shadow: 6px 7px 1.1rem #888888;
 }

@@ -80,8 +80,8 @@ function Header() {
             </Form> */}
           </Navbar.Collapse>
           <Nav className="ms-3">
-            <Button variant="light button me-2 sign-in-btn">Sign-In<i class="bi bi-box-arrow-in-right"></i></Button>
-            <Button variant="light button me-2">Sign-Up<i class="bi bi-person-plus"></i></Button>
+            <Button variant="light button me-2 sign-in-btn">Sign-In<i className="bi bi-box-arrow-in-right"></i></Button>
+            <Button variant="light button me-2">Sign-Up<i className="bi bi-person-plus"></i></Button>
           </Nav>
         </Container>
       </Navbar>
