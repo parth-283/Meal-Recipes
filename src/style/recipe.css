@@ -7,6 +7,8 @@
 
 .card-title-our {
   font-family: "Playfair Display", serif !important;
+  height: 84px!important
+
 }
 
 .card-heading {
@@ -25,8 +27,12 @@
   top: -9px;
 }
 
-.child-div>img{
+.child-div > img {
   width: 40px;
+}
+
+.card-body > .h5 {
+  font-weight: 800 !important;
 }
 
 .figure {
@@ -41,13 +47,27 @@ figure > img {
 
 .time-border {
   border: 2px solid rgba(0, 0, 0, 0.15) !important;
-  padding: 20px;
+  padding: 18px;
 }
 
-.card-body-width{
+.card-body-width {
   width: -webkit-fill-available;
 }
 
-.card-border{
+
+
+.card-border {
   box-shadow: 6px 7px 1.1rem #888888;
+}
+
+.img-size-card {
+  height: 220px;
+}
+
+.card-p-textoverflow {
+  white-space: unset;
+  height: 76px;
+  overflow: overlay;
+  text-overflow: unset;
+  cursor: pointer;
 }

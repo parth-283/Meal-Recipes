@@ -4,12 +4,13 @@ import "./style/App.css";
 import Home from "./component/Home";
 import About from "./component/About";
 import Contact from "./component/Contact";
-import Dinner from './component/Dinner';
-import BreakFast from './component/BreakFast';
-import Lunch from './component/Lunch';
-import Dessert from './component/Dessert';
+import Dinner from "./component/Dinner";
+import BreakFast from "./component/BreakFast";
+import Lunch from "./component/Lunch";
+import Dessert from "./component/Dessert";
 import Recipe from "./component/Recipe";
 import Recipe1 from "./component/Recipe1";
+import Error404 from "./component/Error404";
 
 function App() {
   return (
@@ -25,8 +26,8 @@ function App() {
           <Route path="/dessert" element={<Dessert />} />
           <Route path="/recipe" element={<Recipe />} />
           <Route path="/recipe/:recipeId" element={<Recipe1 />} />
-          
         </Route>
+        <Route path="*" element={<Error404 />} />
       </Routes>
     </>
   );

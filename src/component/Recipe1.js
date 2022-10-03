@@ -41,7 +41,7 @@ function Recipe1() {
                   src={recipe[0]?.image}
                 />
                 <Figure.Caption className="ms-2">
-                  Recipe by
+                  Recipe by{" "}
                   <Card.Link href="#1">{recipe[0]?.chefName}</Card.Link>
                 </Figure.Caption>
               </Figure>
@@ -69,7 +69,11 @@ function Recipe1() {
                     <b>Additional:</b> {recipe[0]?.additionalMins} mins
                   </p>
                   <p>
-                    <b>Total:</b> {recipe[0]?.totalTime} mins
+                    <b>Total:</b>{" "}
+                    {recipe[0]?.prep +
+                      recipe[0]?.cookMins +
+                      recipe[0]?.additionalMins}{" "}
+                    mins
                   </p>
                   <p>
                     <b>Servings:</b> {recipe[0]?.servings}
@@ -78,7 +82,7 @@ function Recipe1() {
                     <b>Yield:</b> {recipe[0]?.yield} servings
                   </p>
                   <p style={{ textAlign: "center" }}>
-                    <Card.Link href="#1">Nutrition Info</Card.Link>
+                    <Card.Link href="#nutrition">Nutrition Info</Card.Link>
                   </p>
                 </div>
                 <div></div>
@@ -87,9 +91,43 @@ function Recipe1() {
 
             <Card.Body style={{ width: "57%" }}>
               <hr />
-              <Card.Title className="card-heading">Ingredients</Card.Title>
+              <Card.Title className="card-heading">Ingredients 🛍️</Card.Title>
               <Card.Text>
-                {recipe[0]?.ingredients.map((item) => {
+                <ul>
+                  {recipe[0]?.ingredients.map((item) => {
+                    return <li>{item}</li>;
+                  })}
+                </ul>
+              </Card.Text>
+            </Card.Body>
+            <Card.Body style={{ width: "57%" }}>
+              <hr />
+              <Card.Title className="card-heading">Directions 👇</Card.Title>
+              <Card.Text>
+                {recipe[0]?.directions.map((item, index) => {
+                  return (
+                    <>
+                      <p>
+                        <b>Step {index + 1}</b>
+                      </p>
+                      <p>{item}</p>
+                    </>
+                  );
+                })}
+              </Card.Text>
+            </Card.Body>
+            <Card.Body style={{ width: "57%" }}>
+              <hr />
+              <Card.Title className="card-heading">Chef's Note 👨‍🍳</Card.Title>
+              <Card.Text>{recipe[0]?.chefNote}</Card.Text>
+            </Card.Body>
+            <Card.Body style={{ width: "57%" }}>
+              <hr />
+              <Card.Title className="card-heading">
+                Nutrition Facts (per serving)
+              </Card.Title>
+              <Card.Text id="nutrition">
+                {recipe[0]?.nutrition.map((item) => {
                   return <li>{item}</li>;
                 })}
               </Card.Text>

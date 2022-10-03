@@ -14,7 +14,7 @@ function Recipe() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    recipeGet(setRecipeData)
+    recipeGet(setRecipeData);
   }, []);
   console.log(recipeData, "recipeData");
 
@@ -34,24 +34,29 @@ function Recipe() {
       </Card>
 
       <Container>
-        <Row xs={1} md={4} className="g-4 mt-5">
+        <Row xs={1} md={3} className="g-4 my-5">
           {recipeData?.items?.map((item, idx) => (
             <Col key={idx}>
               <Card className="card-border">
-                <Card.Img variant="top" src={item?.image} />
+                <Card.Img variant="top img-size-card" src={item?.image} />
                 <Card.Body className="card-body-width">
                   <Card.Title>
-                    <h2 className="card-title-our">{item?.name}</h2>
+                    <h2 className="card-title-our card-body-our">{item?.name}</h2>
                   </Card.Title>
                   <Card.Text>
                     <p className="my-3">
                       <span>🍴 {item?.servings} Servings</span>{" "}
                       <span>
-                        🕛 {item?.totalTime}{" "}
+                        🕛 {item?.prep + item?.cookMins + item?.additionalMins}{" "}
                         Minutes
                       </span>
                     </p>
-                    <p className="card-text my-2">{item?.shortDes}</p>
+                    <p
+                      className="card-text card-p-textoverflow my-2 "
+                      // onClick={() => handleOverflow()}
+                    >
+                      {item?.shortDes}{" "}
+                    </p>
                   </Card.Text>
                   {/* <Nav.Link as={Link} to='' className="mx-4 ">
                   </Nav.Link> */}
