@@ -5,18 +5,18 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Col, Figure, Row } from "react-bootstrap";
 import { useParams } from "react-router";
-import { recipeGet } from "../service/RecipeGet";
+import { recipeGet } from "../utils/RecipeGet";
+import { RecipeIdFilter } from "../utils/RecipeFilter";
 
 function Recipe1() {
   const [recipeData, setRecipeData] = useState();
   const { recipeId } = useParams();
-  const recipe = recipeData?.items?.filter((item) => item?._id == recipeId);
+  const recipe = RecipeIdFilter(recipeData, recipeId);
 
   useEffect(() => {
     recipeGet(setRecipeData);
   }, []);
 
-  console.log(recipe);
 
   return (
     <>

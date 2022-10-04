@@ -4,30 +4,26 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import aboutus1 from "../images/aboutus1.jpg";
 import chef_1 from "../images/chef_1.jpg";
 import chef_2 from "../images/chef_2.jpg";
 import chef_3 from "../images/chef_3.jpg";
 import chef_4 from "../images/chef_4.jpg";
+import aboutus1 from "../images/aboutus1.jpg";
+import HeaderImg from "../utils/HeaderImg";
 
 function About() {
   return (
     <>
       {/* Header IMG */}
-      <Card className="bg-dark text-white main-header mx-1">
+      {/*     <Card className="bg-dark text-white main-header mx-1">
         <Card.Img src={aboutus1} alt="Card image" />
         <Card.ImgOverlay className="text-content">
           <Card.Title>
             <h2 className="main-img-header">About Us</h2>
           </Card.Title>
-          {/* <Card.Text>
-          This is a wider card with supporting text below as a natural lead-in
-          to additional content. This content is a little bit longer.
-        </Card.Text>
-        <Card.Text>Last updated 3 mins ago</Card.Text> */}
         </Card.ImgOverlay>
-      </Card>
-
+      </Card> */}
+      <HeaderImg value={"About Us"} img={aboutus1} />
       {/* About Us Content */}
       <Card className="mx-1 my-2 ">
         <Row xs={1} md={2} className="my-2 container">

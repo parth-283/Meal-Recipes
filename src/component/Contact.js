@@ -1,34 +1,36 @@
 import React from "react";
 import "../style/contact.css";
 import Card from "react-bootstrap/Card";
-import aboutus1 from "../images/aboutus1.jpg";
-import contact from "../images/contact.webp";
+import contactimg from "../images/Contact.jpg";
 import contactbg from "../images/contactbg.webp";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import HeaderImg from "../utils/HeaderImg";
 
 function Contact() {
   return (
     <>
       {/* Header IMG */}
-      <Card className="bg-dark text-white main-header mx-1">
-        <Card.Img src={aboutus1} alt="Card image" />
+      {/* <Card className="bg-dark text-white main-header mx-1">
+        <Card.Img src={contactimg} alt="Card image" />
         <Card.ImgOverlay className="text-content">
           <Card.Title>
             <h2 className="main-img-header">Contact Us</h2>
           </Card.Title>
         </Card.ImgOverlay>
-      </Card>
-
+        </Card> */}
+      <HeaderImg value={"Contact Us"} img={contactimg} />
       <Container className="my-3">
         <Card className="bg-dark text-white contect-card">
           <Card.Img src={contactbg} alt="Card image" />
           <Card.ImgOverlay className="contact-img-overlay">
-          <Card.Title className="contact-title"><h5>Contact Form</h5></Card.Title>
-        <hr/>
+            <Card.Title className="contact-title">
+              <h5>Contact Form</h5>
+            </Card.Title>
+            <hr />
             <Form>
               <Row className="mb-5 ">
                 <Form.Group as={Col} controlId="formGridName">

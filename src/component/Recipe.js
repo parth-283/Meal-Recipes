@@ -5,7 +5,7 @@ import Row from "react-bootstrap/Row";
 import { Link, useNavigate } from "react-router-dom";
 import contact from "../images/DemoRecipe.jpg";
 import RecipeHeader from "../images/RecipeHeader.jpg";
-import { recipeGet } from "../service/RecipeGet";
+import { recipeGet } from "../utils/RecipeGet";
 import "../style/recipe.css";
 
 function Recipe() {
@@ -16,7 +16,6 @@ function Recipe() {
   useEffect(() => {
     recipeGet(setRecipeData);
   }, []);
-  console.log(recipeData, "recipeData");
 
   return (
     <>
@@ -41,7 +40,9 @@ function Recipe() {
                 <Card.Img variant="top img-size-card" src={item?.image} />
                 <Card.Body className="card-body-width">
                   <Card.Title>
-                    <h2 className="card-title-our card-body-our">{item?.name}</h2>
+                    <h2 className="card-title-our card-body-our">
+                      {item?.name}
+                    </h2>
                   </Card.Title>
                   <Card.Text>
                     <p className="my-3">
