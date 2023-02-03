@@ -1,7 +1,6 @@
 import "../style/about.css";
 import React from "react";
 import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import chef_1 from "../images/chef_1.jpg";
@@ -15,14 +14,6 @@ function About() {
   return (
     <>
       {/* Header IMG */}
-      {/*     <Card className="bg-dark text-white main-header mx-1">
-        <Card.Img src={aboutus1} alt="Card image" />
-        <Card.ImgOverlay className="text-content">
-          <Card.Title>
-            <h2 className="main-img-header">About Us</h2>
-          </Card.Title>
-        </Card.ImgOverlay>
-      </Card> */}
       <HeaderImg value={"About Us"} img={aboutus1} />
       {/* About Us Content */}
       <Card className="mx-1 my-2 ">
@@ -32,7 +23,7 @@ function About() {
           </Col>
           <Col className="card-content-col">
             <Card.Body>
-              <Card.Title>Sanjeev Kapoor</Card.Title>
+              <Card.Title className="mx-auto">Sanjeev Kapoor</Card.Title>
               <Card.Text>
                 Sanjeev Kapoor is an Indian celebrity chef, entrepreneur and
                 television personality. Kapoor hosted the TV show Khana Khazana,
@@ -42,7 +33,7 @@ function About() {
             </Card.Body>
           </Col>
         </Row>
-        <Row xs={1} md={2} className="my-2 container">
+        <Row xs={1} md={2} className="my-2 container reverse-img-contant">
           <Col className="card-content-col">
             <Card.Body>
               <Card.Title>Ranveer Singh Brar</Card.Title>
@@ -76,7 +67,7 @@ function About() {
             </Card.Body>
           </Col>
         </Row>
-        <Row xs={1} md={2} className="my-2 container">
+        <Row xs={1} md={2} className="my-2 container reverse-img-contant">
           <Col className="card-content-col">
             <Card.Body>
               <Card.Title>Vikas Khanna</Card.Title>

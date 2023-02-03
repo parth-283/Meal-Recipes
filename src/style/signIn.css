@@ -1,0 +1,26 @@
+.heightTop {
+  margin-top: 1rem;
+}
+
+.signin-card-BG {
+  background: transparent !important;
+  height: 100%;
+}
+
+.signin-card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.mb-1_5 {
+  margin-bottom: 1.5rem;
+}
+
+.signin-bg {
+  background: cadetblue !important;
+}
+
+.signin-border {
+  border-radius: 3rem !important;
+}

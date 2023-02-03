@@ -7,28 +7,21 @@
 
 .card-title-our {
   font-family: "Playfair Display", serif !important;
-  height: 84px!important
-
+  font-size: x-large !important;
+  height: 3rem;
 }
 
 .card-heading {
   font-family: "Cinzel", serif !important;
 }
+
+.recipe-card-height{
+  height: 500px;
+}
+
 .parent-div {
   border: 1px solid black !important;
   position: relative;
-}
-
-.child-div {
-  background-color: #fff;
-  background-position: center center;
-  position: absolute;
-  right: -3px;
-  top: -9px;
-}
-
-.child-div > img {
-  width: 40px;
 }
 
 .card-body > .h5 {
@@ -51,10 +44,11 @@ figure > img {
 }
 
 .card-body-width {
-  width: -webkit-fill-available;
+  width: 100%;
 }
-
-
+.recipe-body-width {
+  width: 60%;
+}
 
 .card-border {
   box-shadow: 6px 7px 1.1rem #888888;
@@ -70,4 +64,25 @@ figure > img {
   overflow: overlay;
   text-overflow: unset;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 350px) {
+  .recipe-card-servings-time {
+    display: flex;
+    flex-direction: column;
+    font-size: medium;
+  }
+  .card-title-our {
+    font-size: large;
+    height: min-content !important;
+  }
+  .card-body > p {
+    font-size: medium;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .recipe-body-width {
+    width: 100%;
+  }
 }

@@ -1,0 +1,98 @@
+p{
+    text-align: justify;
+}
+
+input[type="date"]::-webkit-datetime-edit-text,
+input[type="date"]::-webkit-datetime-edit-month-field,
+input[type="date"]::-webkit-datetime-edit-day-field,
+input[type="date"]::-webkit-datetime-edit-year-field {
+  color: skyblue !important;
+}
+
+input {
+  border-radius: 2rem !important;
+  background: transparent !important;
+  border-color: darkcyan !important;
+  color: cyan !important;
+  margin-top: 1rem !important;
+  margin-bottom: 1rem !important;
+}
+
+input:hover {
+  box-shadow: 4px 3px 1.1rem darkcyan;
+}
+
+input:focus {
+  box-shadow: 1px 1px 1px 1px cyan !important;
+}
+input:visited {
+  box-shadow: 1px 1px 1px 1px cyan !important;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+::-webkit-input-placeholder {
+  /* WebKit, Blink, Edge */
+  color: skyblue !important;
+}
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: skyblue !important;
+  opacity: 1;
+}
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: skyblue !important;
+  opacity: 1;
+}
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: skyblue !important;
+}
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: skyblue !important;
+}
+
+::placeholder {
+  /* Most modern browsers support this now. */
+  color: skyblue !important;
+}
+
+
+
+.global-btn {
+    color: aqua !important;
+    width: 100% !important;
+    background-color: transparent !important;
+    border: 2px solid darkcyan !important;
+  }
+  .global-btn:hover {
+    box-shadow: 4px 3px 1.1rem darkcyan;
+  }
+  
+  .global-btn:focus {
+    box-shadow: 1px 1px 1px 1px cyan !important;
+  }
+  .global-btn:visited {
+    box-shadow: 1px 1px 1px 1px cyan !important;
+  }
+  
+
+  .heading {
+    color: darkcyan;
+    text-align: center;
+    font-size: 4rem !important;
+    font-family: "Rubik Moonrocks", cursive;
+    font-weight: 400 !important;
+  }

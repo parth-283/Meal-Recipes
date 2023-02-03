@@ -1,0 +1,109 @@
+/* placeholder text style */
+
+.signup-input-icons {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.signup-icon {
+  position: absolute;
+  right: 1.5rem;
+}
+
+.signUp-img {
+  opacity: 0.2;
+}
+
+.sign-up-card {
+  border-radius: 0.5rem !important;
+  width: 70%;
+}
+
+.main-sign-up-div {
+  display: flex;
+  justify-content: center;
+}
+
+.sign-up-container {
+  padding-left: 5rem !important;
+  padding-right: 5rem !important;
+}
+
+.error {
+  color: rgb(180, 3, 3);
+}
+
+.form-check-input:checked {
+  background-color: darkturquoise !important;
+  border-color: darkturquoise !important;
+}
+.form-check-input:checked[type="radio"] {
+  background-image: url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%27-4 -4 8 8%27%3e%3ccircle r=%272%27 fill=%27%23fff%27/%3e%3c/svg%3e") !important;
+}
+
+.gender-col {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.gender-div {
+  display: flex;
+  flex-direction: row;
+}
+
+.gender-btn {
+  display: flex !important;
+  align-items: center;
+  margin-right: 2rem;
+}
+
+.gender-btn > input {
+  margin-right: 0.75rem !important;
+}
+
+.signup-input-group {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+.signup-input-group > .input-group-text {
+  background: transparent;
+  color: white;
+  border: none;
+  width: 8rem !important;
+  padding: 0.375rem 0rem !important;
+}
+
+.socialmedia-signup>.col {
+  width: 100% !important;
+}
+
+@media only screen and (max-width: 991px) {
+  .sign-up-card {
+    width: 100%;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  .sign-up-container {
+    padding-left: 3rem !important;
+    padding-right: 3rem !important;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .sign-up-container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  .heading {
+    font-size: 3rem !important;
+  }
+  .col {
+    display: flex;
+    flex-direction: column;
+  }
+}
