@@ -22,45 +22,26 @@ import { userCookieFilter } from "../utils/UserFilter";
 // };
 
 function Profile({ cookies }) {
-  debugger
+  debugger;
   const [userData, setUserData] = useState();
   const [item, setItem] = useState();
 
   const location = useLocation();
 
-  // const userCookieFilter = (data, searchItrem) => {
-  //   console.log("data", data);
-  //   data?.items?.filter((item) => {
-  //     console.log(item, "vivek");
-  //     if (item.tokens.token == searchItrem?.loginToken) {
-  //       console.log("finall item should bee", item);
-  //       setItem(item);
-  //     } else {
-  //       item?.tokens?.filter((tok) => {
-  //         console.log(tok, "ttttttttttttttttt");
-  //         if (tok?.token == searchItrem?.loginToken) {
-  //           console.log("finall item should bee", item);
-  //           setItem(item);
-  //         }
-  //       });
-  //     }
-  //   });
-  // };
-
   useEffect(() => {
     userGet(setUserData);
   }, []);
-  useEffect(async() => {
-    // debugger;
-     await userCookieFilter(userData, cookies,setItem);
-    console.log("====================================");
-    console.log(userData, item, "userDatauserData");
-    
-    console.log("====================================");
-    // userData.items[0].tokens[0].token;
+  useEffect(() => {
+    filterData();
   }, [userData]);
 
-  
+  const filterData = async () => {
+    debugger;
+    await userCookieFilter(userData, cookies, setItem);
+  };
+  console.log("====================================");
+  console.log(userData, item, "userDatauserData");
+  console.log("====================================");
 
   return (
     <>
@@ -77,18 +58,15 @@ function Profile({ cookies }) {
                 <Image
                   className="profile-image"
                   // roundedCircle
-                  src={location?.state?.items?.UserData?.image}
+                  src={item?.image}
                   alt="User_Image"
                 />
                 <div className="profile-first-tab-info ">
                   <label className="profile-name">
                     {" "}
-                    {`${location?.state?.items?.UserData?.fname} ${location?.state?.items?.UserData?.lname}`}
+                    {`${item?.fname} ${item?.lname}`}
                   </label>
-                  <label className="profile-email">
-                    {" "}
-                    {location?.state?.items?.UserData?.email}
-                  </label>
+                  <label className="profile-email"> {item?.email}</label>
                 </div>
               </div>
               <div>
@@ -120,40 +98,35 @@ function Profile({ cookies }) {
                           <label className="profile-info-heading">
                             Full Name:
                           </label>
-                          <label>{`${location?.state?.items?.UserData?.fname} ${location?.state?.items?.UserData?.lname}`}</label>
+                          <label>{`${item?.fname} ${item?.lname}`}</label>
                         </div>
                         <div className="profile-info-section-text">
                           <label className="profile-info-heading">
                             Mobile:{" "}
                           </label>
-                          <label>
-                            {" "}
-                            {location?.state?.items?.UserData?.mobile}
-                          </label>
+                          <label> {item?.mobile}</label>
                         </div>
                         <div className="profile-info-section-text">
                           <label className="profile-info-heading">
                             Email:{" "}
                           </label>
-                          <label>
-                            {location?.state?.items?.UserData?.email}
-                          </label>
+                          <label>{item?.email}</label>
                         </div>
                         <div className="profile-info-section-text">
                           <label className="profile-info-heading">
                             Gender:{" "}
                           </label>
-                          {location?.state?.items?.UserData?.gender}
+                          {item?.gender}
                         </div>
                         <div className="profile-info-section-text">
                           <label className="profile-info-heading">City: </label>
-                          {location?.state?.items?.UserData?.city}
+                          {item?.city}
                         </div>
                         <div className="profile-info-section-text">
                           <label className="profile-info-heading">
                             State:{" "}
                           </label>
-                          {location?.state?.items?.UserData?.state}
+                          {item?.state}
                         </div>
                         <div className="profile-info-section-text">
                           <label className="profile-info-heading">
@@ -164,7 +137,7 @@ function Profile({ cookies }) {
                               className="profile-info-icon-btn"
                               onClick={(e) => {
                                 window.open(
-                                  `https://www.facebook.com/${location?.state?.items?.UserData?.facebook}`
+                                  `https://www.facebook.com/${item?.facebook}`
                                 );
                               }}
                             >
@@ -175,7 +148,7 @@ function Profile({ cookies }) {
                               className="profile-info-icon-btn"
                               onClick={(e) => {
                                 window.open(
-                                  `https://www.twiter.com/${location?.state?.items?.UserData?.twiter}`
+                                  `https://www.twiter.com/${item?.twiter}`
                                 );
                               }}
                             >
@@ -185,7 +158,7 @@ function Profile({ cookies }) {
                               className="profile-info-icon-btn"
                               onClick={(e) => {
                                 window.open(
-                                  `https://www.instagram.com/${location?.state?.items?.UserData?.instagram}`
+                                  `https://www.instagram.com/${item?.instagram}`
                                 );
                               }}
                             >
