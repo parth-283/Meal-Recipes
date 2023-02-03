@@ -1,36 +1,37 @@
 import React, { useState } from "react";
-import "../style/navbar.css";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import Footer from "./Footer";
 import "../style/header.css";
+import User from "../images/User.gif";
 
-function Header() {
+function Header({ cookies, removeCookie }) {
   const [show, setShow] = useState(false);
-  const showDropdown = (e) => {
-    setShow(!show);
+  const [userDropdown, setUserDropdown] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleLogOut = () => {
+    removeCookie("loginToken");
+    navigate("/signin");
   };
-  const hideDropdown = (e) => {
-    setShow(false);
-  };
+
   return (
     <>
-      <Navbar expand="lg" className="navbar">
+      <Navbar expand="lg" className="navbar ">
         <Container fluid>
           <Navbar.Brand as={Link} to="/">
-            <h3 className="link-hading" style={{color: "lightseagreen"}}>Recipe</h3>
+            <h3 className="link-hading" style={{ color: "lightseagreen" }}>
+              Recipe
+            </h3>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
-            <Nav
-              className="mx-auto my-2 my-lg-0 nav-bar-Link"
-              style={{ maxHeight: "100px" }}
-              navbarScroll
-            >
+            <Nav className="mx-auto my-2 my-lg-0 nav-bar-Link" navbarScroll>
               <Nav.Link as={Link} to="/" className="mx-4 ">
                 Home
               </Nav.Link>
@@ -45,8 +46,8 @@ function Header() {
                 id="navbarScrollingDropdown"
                 className="mx-4 "
                 show={show}
-                onMouseEnter={showDropdown}
-                onMouseLeave={hideDropdown}
+                onMouseEnter={() => setShow(true)}
+                onMouseLeave={() => setShow(false)}
               >
                 <NavDropdown.Item as={Link} to="/breakfast">
                   BreakFast
@@ -69,23 +70,69 @@ function Header() {
                 Recipes
               </Nav.Link>
             </Nav>
-            {/* <Form className="d-flex">
-              <Form.Control
-                type="search"
-                placeholder="Search"
-                className="me-2"
-                aria-label="Search"
-              />
-              <Button variant="outline-success me-2">Search</Button>
-            </Form> */}
+            {cookies?.loginToken === undefined ? (
+              <Nav className="ms-3">
+                <Button
+                  variant="light button me-2 sign-in-btn"
+                  onClick={() => navigate("/Signin")}
+                >
+                  Sign-In<i className="bi bi-box-arrow-in-right"></i>
+                </Button>
+                <Button
+                  variant="light button me-2"
+                  onClick={() => navigate("/signup")}
+                >
+                  Sign-Up<i className="bi bi-person-plus"></i>
+                </Button>
+              </Nav>
+            ) : (
+              <Nav
+                className="ms-3 user-dropdown"
+                onMouseEnter={() => setUserDropdown(true)}
+                onMouseLeave={() => setUserDropdown(false)}
+              >
+                {/* <Button
+                  variant="light button me-2 sign-in-btn"
+                  onClick={() => handleLogOut()}
+                >
+                  Sign-Out<i className="bi bi-box-arrow-right"></i>
+                </Button> */}
+                <img
+                  src={User}
+                  alt="User"
+                  className="img-dropdown"
+                  width="30"
+                  height="30"
+                />
+
+                <NavDropdown
+                  title="Parth Kathiriya"
+                  id="navbarScrollingDropdown"
+                  className=" "
+                  show={userDropdown}
+                >
+                  <NavDropdown.Item as={Link} to="/profile">
+                    Profile
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/dinner">
+                    Dinner
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item
+                    as={Link}
+                    to="/signin"
+                    onClick={() => handleLogOut()}
+                  >
+                    Sign-Out<i className="bi bi-person-x ps-2"></i>
+                  </NavDropdown.Item>
+                </NavDropdown>
+              </Nav>
+            )}
           </Navbar.Collapse>
-          <Nav className="ms-3">
-            <Button variant="light button me-2 sign-in-btn">Sign-In<i className="bi bi-box-arrow-in-right"></i></Button>
-            <Button variant="light button me-2">Sign-Up<i className="bi bi-person-plus"></i></Button>
-          </Nav>
         </Container>
       </Navbar>
       <Outlet />
+      <Footer />
     </>
   );
 }

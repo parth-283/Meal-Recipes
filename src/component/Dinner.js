@@ -1,27 +1,32 @@
 import React, { useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
 import { Col, Container, Figure, Row, Button } from "react-bootstrap";
-import { recipeGet } from "../utils/RecipeGet";
+import { recipeGet } from "../utils/API";
 import RecipeHeader from "../images/RecipeHeader.jpg";
 import { useNavigate } from "react-router";
 import { RecipeCategoryFilter } from "../utils/RecipeFilter";
 import HeaderImg from "../utils/HeaderImg";
+import Recipe from "./Recipe";
 
 function Dinner() {
-  const [recipeData, setRecipeData] = useState();
+  // const [recipeData, setRecipeData] = useState();
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const recipe = RecipeCategoryFilter(recipeData, "Dinner");
+  // const recipe = RecipeCategoryFilter(recipeData, "Dinner");
 
-  useEffect(() => {
-    recipeGet(setRecipeData);
-  }, []);
+  // useEffect(() => {
+  //   recipeGet(setRecipeData);
+  // }, []);
   return (
     <>
-      {recipe && <HeaderImg value={"Dinner"} img={RecipeHeader} />}
+      {/* {recipe && <HeaderImg value={"Dinner"} img={RecipeHeader} />} */}
 
-      {recipe?.length !== 0 ? (
+      <div>
+        <Recipe headervalue={"Dinner"} headerImg={RecipeHeader} />
+      </div>
+
+      {/* {recipe?.length !== 0 ? (
         <Container>
           <Row xs={1} md={3} className="g-4 my-5">
             {recipe?.map((item, idx) => (
@@ -43,15 +48,11 @@ function Dinner() {
                           Minutes
                         </span>
                       </p>
-                      <p
-                        className="card-text card-p-textoverflow my-2 "
-                        // onClick={() => handleOverflow()}
-                      >
+                      <p className="card-text card-p-textoverflow my-2 ">
                         {item?.shortDes}{" "}
                       </p>
                     </Card.Text>
-                    {/* <Nav.Link as={Link} to='' className="mx-4 ">
-            </Nav.Link> */}
+
                     <Button
                       variant="outline-info"
                       onClick={() => {
@@ -64,14 +65,11 @@ function Dinner() {
                 </Card>
               </Col>
             ))}
-          </Row>
+          </Row> 
         </Container>
       ) : (
-          <Row>
-            <Col>1 of 2</Col>
-            <Col>2 of 2</Col>
-          </Row>
-      )}
+        <div></div>
+      )}*/}
     </>
   );
 }

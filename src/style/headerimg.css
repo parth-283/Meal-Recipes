@@ -1,0 +1,20 @@
+@media only screen and (max-width: 1400px) {
+  .main-img-header {
+    font-size: 4rem !important;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .main-img-header {
+    font-size: 3rem !important;
+  }
+}
+
+@media only screen and (max-width: 325px) {
+  .main-img-header {
+    font-size: 1.5rem !important;
+  }
+  .card-title {
+    margin-bottom: 0 !important;
+}
+}

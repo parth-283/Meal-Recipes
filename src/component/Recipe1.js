@@ -1,42 +1,46 @@
 import React, { useEffect, useState } from "react";
-import contact from "../images/DemoRecipe.jpg";
 import "../style/recipe.css";
-import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Col, Figure, Row } from "react-bootstrap";
 import { useParams } from "react-router";
-import { recipeGet } from "../utils/RecipeGet";
+import { recipeGet } from "../utils/API";
 import { RecipeIdFilter } from "../utils/RecipeFilter";
+import StarsRating from "react-star-rate";
 
 function Recipe1() {
   const [recipeData, setRecipeData] = useState();
   const { recipeId } = useParams();
   const recipe = RecipeIdFilter(recipeData, recipeId);
+  const [value, setValue] = useState(3.5);
 
   useEffect(() => {
     recipeGet(setRecipeData);
   }, []);
-
 
   return (
     <>
       {recipe && (
         <div>
           <Card>
-            <Card.Body style={{ width: "57%" }}>
+            <Card.Body className="recipe-body-width">
               <Card.Title className="card-title-our">
                 {recipe[0]?.name}
               </Card.Title>
               <Card.Text>
-                <Card.Link href="#1">3 Ratings</Card.Link> |
-                <Card.Link href="#2">3 Reviews</Card.Link>
+                <StarsRating
+                  value={value}
+                  // onChange={(value) => {
+                  //   setValue(value);
+                  // }}
+                />
+                <Card.Text>3 Reviews</Card.Text>
               </Card.Text>
               <Card.Text>{recipe[0]?.description}</Card.Text>
               <Figure>
                 <Figure.Image
                   width={50}
                   height={50}
-                  alt="171x180"
+                  alt="UserPicture"
                   className="rounded-circle"
                   src={recipe[0]?.image}
                 />
@@ -46,50 +50,48 @@ function Recipe1() {
                 </Figure.Caption>
               </Figure>
             </Card.Body>
-            <Row style={{ width: "57%" }}>
-              <Col xs={12} md={9}>
+            <Row className="recipe-body-width img-time-section">
+              <Col xs={12} md={12} lg={8} className="img-section">
                 <Card.Img variant="top" src={recipe[0]?.image} />
               </Col>
-              <Col xs={6} md={3} className="mx-auto mt-1">
+              <Col xs={12} md={12} lg={4} className="mx-auto mt-1 time-section">
                 <div className="time-border parent-div">
-                  <div className="child-div" style={{ fontSize: "25px" }}>
-                    {/* <i className="bi bi-stopwatch-fill"></i> */}
-                    <img
-                      src="https://img.icons8.com/glyph-neue/64/FAB005/stopwatch.png"
-                      alt="icon"
-                    />
+                  <div>
+                    <div>
+                      <p>
+                        <b>Prep:</b> {recipe[0]?.prep} mins
+                      </p>
+                      <p>
+                        <b>Cook:</b> {recipe[0]?.cookMins} mins
+                      </p>
+                      <p>
+                        <b>Additional:</b> {recipe[0]?.additionalMins} mins
+                      </p>
+                    </div>
+                    <div>
+                      <p>
+                        <b>Total:</b>{" "}
+                        {recipe[0]?.prep +
+                          recipe[0]?.cookMins +
+                          recipe[0]?.additionalMins}{" "}
+                        mins
+                      </p>
+                      <p>
+                        <b>Servings:</b> {recipe[0]?.servings}
+                      </p>
+                      <p>
+                        <b>Yield:</b> {recipe[0]?.yield} servings
+                      </p>
+                    </div>
                   </div>
-                  <p>
-                    <b>Prep:</b> {recipe[0]?.prep} mins
-                  </p>
-                  <p>
-                    <b>Cook:</b> {recipe[0]?.cookMins} mins
-                  </p>
-                  <p>
-                    <b>Additional:</b> {recipe[0]?.additionalMins} mins
-                  </p>
-                  <p>
-                    <b>Total:</b>{" "}
-                    {recipe[0]?.prep +
-                      recipe[0]?.cookMins +
-                      recipe[0]?.additionalMins}{" "}
-                    mins
-                  </p>
-                  <p>
-                    <b>Servings:</b> {recipe[0]?.servings}
-                  </p>
-                  <p>
-                    <b>Yield:</b> {recipe[0]?.yield} servings
-                  </p>
                   <p style={{ textAlign: "center" }}>
                     <Card.Link href="#nutrition">Nutrition Info</Card.Link>
                   </p>
                 </div>
-                <div></div>
               </Col>
             </Row>
 
-            <Card.Body style={{ width: "57%" }}>
+            <Card.Body className="recipe-body-width">
               <hr />
               <Card.Title className="card-heading">Ingredients 🛍️</Card.Title>
               <Card.Text>
@@ -100,7 +102,7 @@ function Recipe1() {
                 </ul>
               </Card.Text>
             </Card.Body>
-            <Card.Body style={{ width: "57%" }}>
+            <Card.Body className="recipe-body-width">
               <hr />
               <Card.Title className="card-heading">Directions 👇</Card.Title>
               <Card.Text>
@@ -116,12 +118,12 @@ function Recipe1() {
                 })}
               </Card.Text>
             </Card.Body>
-            <Card.Body style={{ width: "57%" }}>
+            <Card.Body className="recipe-body-width">
               <hr />
               <Card.Title className="card-heading">Chef's Note 👨‍🍳</Card.Title>
               <Card.Text>{recipe[0]?.chefNote}</Card.Text>
             </Card.Body>
-            <Card.Body style={{ width: "57%" }}>
+            <Card.Body className="recipe-body-width">
               <hr />
               <Card.Title className="card-heading">
                 Nutrition Facts (per serving)

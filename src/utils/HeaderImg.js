@@ -1,5 +1,6 @@
 import React from "react";
 import { Card } from "react-bootstrap";
+import "../style/headerimg.css";
 
 function HeaderImg(value) {
   return (
@@ -9,6 +10,7 @@ function HeaderImg(value) {
           <Card.Img
             //   src="https://source.unsplash.com/random/1600x300/?food"
             src={value.img}
+            className="img-fluid"
             alt="Card image"
           />
           <Card.ImgOverlay className="text-content">

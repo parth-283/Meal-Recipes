@@ -1,38 +1,6 @@
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
 
-/* Firefox */
-input[type="number"] {
-  -moz-appearance: textfield;
-}
-
-::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color:    skyblue !important;
-}
-:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color:    skyblue !important;
-   opacity:  1;
-}
-::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color:    skyblue !important;
-   opacity:  1;
-}
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color:    skyblue !important;
-}
-::-ms-input-placeholder { /* Microsoft Edge */
-   color:    skyblue !important;
-}
-
-::placeholder { /* Most modern browsers support this now. */
-   color:    skyblue !important;
-}
-
-.form-control {
+.Input > input,
+.Input > textarea {
   display: unset !important;
   background-color: transparent !important;
   border: none !important;
@@ -42,14 +10,15 @@ input[type="number"] {
   box-shadow: none !important;
 }
 
-.card-img-overlay {
-  display: grid;
-  justify-content: center;
-  align-items: center;
+.Input > textarea:focus{
+  box-shadow: 1px 1px 1px 1px cyan !important;
 }
 
 .contact-img-overlay {
   margin-top: 0px;
+  display: grid;
+  justify-content: center;
+  align-items: center;
 }
 
 .contect-card {
@@ -61,28 +30,65 @@ input[type="number"] {
   opacity: 0.5;
 }
 
-.contact-img-overlay  > .contact-title {
-  
+.contact-card-img {
+  height: 100%;
+}
+
+.contact-img-overlay > .contact-title {
   display: flex !important;
-    justify-content: center !important;
+  justify-content: center !important;
 }
 
-.contact-img-overlay > .contact-title > h5{
-    font-size: 38px !important;
-    /* color: lightskyblue; */
+.contact-img-overlay > .contact-title > h5 {
+  font-size: 38px;
+  /* color: lightskyblue; */
 }
 
-.contact-btn{
-    color: aqua !important;
-    width: -webkit-fill-available !important;
-    background-color: transparent !important;
-    border: 2px solid aqua !important;
+.contact-btn {
+  color: aqua !important;
+  width: -webkit-fill-available !important;
+  background-color: transparent !important;
+  border: 2px solid aquamarine !important;
+}
+.contact-btn:hover {
+  box-shadow: 4px 3px 1.1rem darkcyan;
+}
+
+.contact-btn:focus {
+  box-shadow: 1px 1px 1px 1px cyan !important;
+}
+.contact-btn:visited {
+  box-shadow: 1px 1px 1px 1px cyan !important;
 }
 
 .contact-img-overlay > hr {
-    margin: 1rem 0;
-    color: inherit;
-    background-color: beige;
-    border: 1px solid lightskyblue;
-    opacity: 0.7;
+  margin: 1rem 0;
+  color: inherit;
+  background-color: beige;
+  border: 1px solid lightskyblue;
+  opacity: 0.7;
+}
+
+@media only screen and (max-width: 1400px) {
+}
+
+@media only screen and (max-width: 767px) {
+  .container {
+    padding-right: 1.5rem !important;
+    padding-left: 1.5rem !important;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .contact-title > h5 {
+    font-size: 28px !important;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+  .contect-card{
+    height: 816px;
+  }
+  .form-row #formGridName{margin-bottom: 3rem !important;}
 }

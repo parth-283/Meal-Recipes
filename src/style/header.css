@@ -18,17 +18,19 @@
   text-align: center;
 }
 
-.nav-bar-Link a {
+.nav-bar-Link .mx-4 {
   border-radius: 12.2px;
 }
 
+.nav-link:hover,
 .nav-bar-Link :hover {
   border-radius: 12.2px;
-  background-color: #e3f2ff ;
+  background-color: lightcyan;
+  color: darkcyan !important;
 }
 
-.dropdown-category-list>a:hover{
-    background: azure;
+.dropdown-category-list > a:hover {
+  background: azure;
 }
 
 .button {
@@ -44,7 +46,49 @@
   padding-left: 5px;
 }
 
-.button:hover {
-  background: rgb(210, 205, 205) !important;
-  color: rgb(42, 67, 66) !important;
+.img-dropdown {
+  background-color: darkcyan;
+  border-radius: 1rem;
+}
+
+.user-dropdown {
+  display: flex;
+  align-items: center;
+}
+
+@media only screen and (max-width: 1400px) {
+  .navbar {
+    margin-left: 4%;
+    margin-right: 4%;
+  }
+  .link-hading {
+    font-size: 2.5rem;
+  }
+  .button {
+    font-size: medium !important;
+    width: max-content;
+  }
+  .nav-bar-Link {
+    font-size: medium !important;
+  }
+  .nav-bar-Link .mx-4 {
+    margin-right: 0.5rem !important;
+    margin-left: 0.5rem !important;
+  }
+  .navbar-nav-scroll {
+    display: flex !important;
+    overflow-y: unset !important;
+  }
+  .navbar-nav {
+    align-items: center;
+  }
+  .navbar-nav .btn {
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .link-hading {
+    font-size: 1.75rem;
+  }
 }

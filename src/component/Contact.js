@@ -11,58 +11,62 @@ import Container from "react-bootstrap/Container";
 import HeaderImg from "../utils/HeaderImg";
 
 function Contact() {
+  const handleConatctForm = (e) => {
+    e.preventDefault();
+  };
   return (
     <>
       {/* Header IMG */}
-      {/* <Card className="bg-dark text-white main-header mx-1">
-        <Card.Img src={contactimg} alt="Card image" />
-        <Card.ImgOverlay className="text-content">
-          <Card.Title>
-            <h2 className="main-img-header">Contact Us</h2>
-          </Card.Title>
-        </Card.ImgOverlay>
-        </Card> */}
+
       <HeaderImg value={"Contact Us"} img={contactimg} />
       <Container className="my-3">
         <Card className="bg-dark text-white contect-card">
-          <Card.Img src={contactbg} alt="Card image" />
+          <Card.Img
+            className="contact-card-img"
+            src={contactbg}
+            alt="Card image"
+          />
           <Card.ImgOverlay className="contact-img-overlay">
             <Card.Title className="contact-title">
               <h5>Contact Form</h5>
             </Card.Title>
             <hr />
-            <Form>
-              <Row className="mb-5 ">
-                <Form.Group as={Col} controlId="formGridName">
+            <Form onSubmit={(e) => handleConatctForm(e)}>
+              <Row className="mb-4 form-row">
+                <Form.Group className="Input" as={Col} controlId="formGridName">
                   <Form.Label>Name*</Form.Label>
-                  <Form.Control type="text" placeholder="Enter Name" />
+                  <Form.Control type="text" autoComplete="off" placeholder="Enter Name" />
                 </Form.Group>
 
-                <Form.Group as={Col} controlId="formGridSurname">
+                <Form.Group
+                  className="Input"
+                  as={Col}
+                  controlId="formGridSurname"
+                >
                   <Form.Label>Surname*</Form.Label>
-                  <Form.Control type="text" placeholder="Enter Surname" />
+                  <Form.Control type="text" autoComplete="off" placeholder="Enter Surname" />
                 </Form.Group>
               </Row>
 
-              <Form.Group className="mb-5" controlId="formGridEmail">
+              <Form.Group className="mb-4 Input" controlId="formGridEmail">
                 <Form.Label>Email*</Form.Label>
-                <Form.Control type="email" placeholder="Enter Email" />
+                <Form.Control type="email" autoComplete="off" placeholder="Enter Email" />
               </Form.Group>
 
-              <Form.Group className="mb-5" controlId="formGridPhone">
+              <Form.Group className="mb-4 Input" controlId="formGridPhone">
                 <Form.Label>Phone*</Form.Label>
-                <Form.Control type="number" placeholder="Enter Phone" />
+                <Form.Control type="number" autoComplete="off" placeholder="Enter Phone" />
               </Form.Group>
 
               <Form.Group
-                className="mb-5"
+                className="mb-4 Input"
                 controlId="exampleForm.ControlTextarea1"
               >
                 <Form.Label>Message*</Form.Label>
                 <Form.Control
                   as="textarea"
                   rows={3}
-                  placeholder="Enter Message"
+                  autoComplete="off" placeholder="Enter Message"
                 />
               </Form.Group>
 

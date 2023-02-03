@@ -5,10 +5,11 @@ import Row from "react-bootstrap/Row";
 import { Link, useNavigate } from "react-router-dom";
 import contact from "../images/DemoRecipe.jpg";
 import RecipeHeader from "../images/RecipeHeader.jpg";
-import { recipeGet } from "../utils/RecipeGet";
+import { recipeGet } from "../utils/API";
 import "../style/recipe.css";
+import { RecipeCategoryFilter } from "../utils/RecipeFilter";
 
-function Recipe() {
+function Recipe(params) {
   const [recipeData, setRecipeData] = useState();
 
   const navigate = useNavigate();
@@ -17,26 +18,33 @@ function Recipe() {
     recipeGet(setRecipeData);
   }, []);
 
+  const recipe = RecipeCategoryFilter(recipeData, params?.headervalue);
+
+  console.log("reciperecipe", recipe);
+
+  let displayRecipe = recipe && recipe.length ? recipe : recipeData?.items;
+
   return (
     <>
       <Card className="bg-dark text-white main-header mx-1">
         <Card.Img
-          //   src="https://source.unsplash.com/random/1600x300/?food"
-          src={RecipeHeader}
+          src={params?.headerImg ? params.headerImg : RecipeHeader}
           alt="Card image"
         />
         <Card.ImgOverlay className="text-content">
           <Card.Title>
-            <h2 className="main-img-header">Recipes</h2>
+            <h2 className="main-img-header">
+              {params?.headervalue ? params.headervalue : "Recipes"}
+            </h2>
           </Card.Title>
         </Card.ImgOverlay>
       </Card>
 
       <Container>
-        <Row xs={1} md={3} className="g-4 my-5">
-          {recipeData?.items?.map((item, idx) => (
+        <Row xs={1} sm={1} md={2} lg={3} xl={3} xxl={3} className="g-4 my-5">
+          {displayRecipe?.map((item, idx) => (
             <Col key={idx}>
-              <Card className="card-border">
+              <Card className="card-border recipe-card-height">
                 <Card.Img variant="top img-size-card" src={item?.image} />
                 <Card.Body className="card-body-width">
                   <Card.Title>
@@ -45,22 +53,18 @@ function Recipe() {
                     </h2>
                   </Card.Title>
                   <Card.Text>
-                    <p className="my-3">
+                    <p className="my-3 recipe-card-servings-time">
                       <span>🍴 {item?.servings} Servings</span>{" "}
                       <span>
                         🕛 {item?.prep + item?.cookMins + item?.additionalMins}{" "}
                         Minutes
                       </span>
                     </p>
-                    <p
-                      className="card-text card-p-textoverflow my-2 "
-                      // onClick={() => handleOverflow()}
-                    >
+                    <p className="card-text card-p-textoverflow my-2 ">
                       {item?.shortDes}{" "}
                     </p>
                   </Card.Text>
-                  {/* <Nav.Link as={Link} to='' className="mx-4 ">
-                  </Nav.Link> */}
+
                   <Button
                     variant="outline-info"
                     onClick={() => {
