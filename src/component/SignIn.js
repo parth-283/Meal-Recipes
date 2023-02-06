@@ -94,7 +94,7 @@ function SignIn({ setCookie }) {
     } else {
       apiData = await userSignIn(userLoginData);
       handleCookie(apiData);
-      navigate("/profile", { state: apiData });
+      navigate("/profile");
     }
   };
 

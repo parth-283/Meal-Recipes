@@ -57,3 +57,21 @@ export const userSignIn = async (userLoginData) => {
     });
   return Data;
 };
+
+export const updateRecipeIds = async (userRecipeIds) => {
+  var requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(userRecipeIds),
+    redirect: "follow",
+  };
+  let Data;
+  await fetch("http://localhost:4500/user/addRecipeId", requestOptions)
+    .then((res) => res.json())
+    .then((json) => {
+      Data = {
+        items: json
+      };
+    });
+  return Data;
+};
