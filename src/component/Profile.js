@@ -4,29 +4,36 @@ import Image from "react-bootstrap/Image";
 import User from "../images/User.gif";
 import "../style/profile.css";
 import userProfileBg from "../images/userProfile.jpg";
-import userImage from "../images/user-image.jpg";
 import StarsRating from "react-star-rate";
-import { userGet } from "../utils/API";
+import { recipeGet, userGet } from "../utils/API";
 import { userCookieFilter } from "../utils/UserFilter";
+import { RecipeIdFilter } from "../utils/RecipeFilter";
 
 function Profile({ cookies }) {
-  debugger;
   const [userData, setUserData] = useState();
   const [user, setUser] = useState();
-  const [userRecipeIds, setUserRecipeIds] = useState({
-    recipeId: "",
-    userId:""
-  })
+  const [recipeData, setRecipeData] = useState();
+  const [filterRecipeData, setFilterRecipeData] = useState([]);
 
   useEffect(() => {
     userGet(setUserData);
+    recipeGet(setRecipeData);
   }, []);
   useEffect(() => {
     filterData();
+    filterRecipeId();
   }, [userData]);
 
   const filterData = async () => {
     await userCookieFilter(userData, cookies, setUser);
+  };
+
+  const filterRecipeId = () => {
+    let recipe = [];
+    for (let i = 0; i < user?.recipeIds?.length; i++) {
+      recipe.push(RecipeIdFilter(recipeData, user.recipeIds[i].recipeId)[0]);
+    }
+    recipe.length && setFilterRecipeData({ ...filterRecipeData, recipe });
   };
 
   return (
@@ -122,7 +129,6 @@ function Profile({ cookies }) {
                                 );
                               }}
                             >
-                              {/* href="https://www.facebook.com/parth.kathiriya-283" */}
                               <i className="bi bi-facebook"></i>{" "}
                             </button>
                             <button
@@ -159,38 +165,45 @@ function Profile({ cookies }) {
                 </Container>
               </Card>
             </div>
-            <div className="profile-card-3 profile-recipe-card">
-              <Card className=" profile-card  my-4">
-                <Card className="  my-4" style={{ width: "18rem" }}>
-                  <Card.Img variant="top" src={userImage} />
-                  <Card.Body>
-                    <div>
-                      <Card.Title className="profile-recipe-title">
-                        Tomato Paneer Recipe
-                      </Card.Title>
-                      <div className="profile-racipe-rating">
-                        <StarsRating
-                          value={3.5}
-                          // onChange={(value) => {
-                          //   setValue(value);
-                          // }}
-                        />
-                        <label>3.5</label>
-                      </div>
-                    </div>
-                    <p className="my-3 profile-recipe-time ">
-                      <span>🍴 9 Servings</span> <span>🕛 31 Minutes</span>
-                    </p>
-                    <Card.Text className="profile-recipe-dec">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </Card.Text>
-                    <div>
-                      <Button variant="btn global-btn ">View Reicpe</Button>
-                    </div>
-                  </Card.Body>
-                </Card>
-              </Card>
+            <div>
+              <div>
+                <h2>My Recipes</h2>
+              </div>
+              <div className="profile-card-3 profile-recipe-card">
+                {filterRecipeData?.recipe?.map((item) => (
+                  <Card className=" profile-card  my-4">
+                    <Card className="my-4" style={{ width: "18rem" }}>
+                      <Card.Img variant="top" src={item?.image} />
+                      <Card.Body>
+                        <div>
+                          <Card.Title className="profile-recipe-title">
+                            {item?.name}
+                          </Card.Title>
+                        </div>
+                        <p className="my-3 profile-recipe-time ">
+                          <span>🍴 {item?.servings} Servings</span>{" "}
+                          <span>🕛 {item?.totalTime} Minutes</span>
+                        </p>
+                        <div className="profile-racipe-rating">
+                          <StarsRating
+                            value={3.5}
+                            // onChange={(value) => {
+                            //   setValue(value);
+                            // }}
+                          />
+                          <label>3.5</label>
+                        </div>
+                        <Card.Text className="profile-recipe-dec">
+                          {item?.shortDes}
+                        </Card.Text>
+                        <div>
+                          <Button variant="btn global-btn ">View More</Button>
+                        </div>
+                      </Card.Body>
+                    </Card>
+                  </Card>
+                ))}
+              </div>
             </div>
           </div>
         </div>
