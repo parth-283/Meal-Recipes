@@ -165,45 +165,47 @@ function Profile({ cookies }) {
                 </Container>
               </Card>
             </div>
-            <div>
-              <div>
-                <h2>My Recipes</h2>
-              </div>
-              <div className="profile-card-3 profile-recipe-card">
-                {filterRecipeData?.recipe?.map((item) => (
-                  <Card className=" profile-card  my-4">
-                    <Card className="my-4" style={{ width: "18rem" }}>
-                      <Card.Img variant="top" src={item?.image} />
-                      <Card.Body>
-                        <div>
-                          <Card.Title className="profile-recipe-title">
-                            {item?.name}
-                          </Card.Title>
-                        </div>
-                        <p className="my-3 profile-recipe-time ">
-                          <span>🍴 {item?.servings} Servings</span>{" "}
-                          <span>🕛 {item?.totalTime} Minutes</span>
-                        </p>
-                        <div className="profile-racipe-rating">
-                          <StarsRating
-                            value={3.5}
-                            // onChange={(value) => {
-                            //   setValue(value);
-                            // }}
-                          />
-                          <label>3.5</label>
-                        </div>
-                        <Card.Text className="profile-recipe-dec">
-                          {item?.shortDes}
-                        </Card.Text>
-                        <div>
-                          <Button variant="btn global-btn ">View More</Button>
-                        </div>
-                      </Card.Body>
+            <div className="profile-recipe-card-section">
+              <Card className="profile-card">
+                <div>
+                  <h2 className="profile-recipe-card-heading">My Recipes</h2>
+                </div>
+                <div className="profile-card-3 profile-recipe-card">
+                  {filterRecipeData?.recipe?.map((item) => (
+                    <Card className=" profile-card  my-4">
+                      <Card className="my-4" style={{ width: "18rem" }}>
+                        <Card.Img variant="top" src={item?.image} />
+                        <Card.Body>
+                          <div>
+                            <Card.Title className="profile-recipe-title">
+                              {item?.name}
+                            </Card.Title>
+                          </div>
+                          <p className="my-3 profile-recipe-time ">
+                            <span>🍴 {item?.servings} Servings</span>{" "}
+                            <span>🕛 {item?.totalTime} Minutes</span>
+                          </p>
+                          <div className="profile-racipe-rating">
+                            <StarsRating
+                              value={3.5}
+                              // onChange={(value) => {
+                              //   setValue(value);
+                              // }}
+                            />
+                            <label>3.5</label>
+                          </div>
+                          <Card.Text className="profile-recipe-dec">
+                            {item?.shortDes}
+                          </Card.Text>
+                          <div>
+                            <Button variant="btn global-btn ">View More</Button>
+                          </div>
+                        </Card.Body>
+                      </Card>
                     </Card>
-                  </Card>
-                ))}
-              </div>
+                  ))}
+                </div>
+              </Card>
             </div>
           </div>
         </div>

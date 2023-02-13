@@ -112,10 +112,10 @@ function Header({ cookies, removeCookie }) {
                   show={userDropdown}
                 >
                   <NavDropdown.Item as={Link} to="/profile">
-                    Profile <i class="bi bi-person-badge ps-2"></i>
+                    Profile <i className="bi bi-person-badge ps-2"></i>
                   </NavDropdown.Item>
                   <NavDropdown.Item as={Link} to="/addrecipe">
-                    Add Recipe<i class="bi bi-file-earmark-plus ps-2"></i>
+                    Add Recipe<i className="bi bi-file-earmark-plus ps-2"></i>
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item

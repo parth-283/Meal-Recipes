@@ -1,0 +1,47 @@
+.addrecipe-global-card {
+  box-shadow: rgb(0 0 0 / 35%) 0rem 0.25rem 0.375rem -0.0625rem,
+    rgb(0 0 0 / 5%) 0rem 0.125rem 0.25rem -0.0625rem;
+}
+.addrecipe-progressbar-div {
+  width: 80%;
+}
+.tabs-section-div {
+  width: 80%;
+}
+.tabs-section {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.addrecipe-button-div {
+  width: 34%;
+  display: flex;
+}
+
+.addrecipe-button-div > button {
+  color: darkcyan !important;
+}
+
+.tab-class {
+  display: flex;
+  justify-content: center;
+}
+
+.addrecipe-form-1 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.addrecipe-form-1 > .row {
+  width: 80%;
+  align-items: center;
+}
+
+.addrecipe-selectbox {
+  border: 1px solid darkcyan !important;
+  border-radius: 2rem !important;
+  color: lightblue !important;
+}

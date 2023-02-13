@@ -79,6 +79,7 @@ input[type="number"] {
   }
   .global-btn:hover {
     box-shadow: 4px 3px 1.1rem darkcyan;
+    color: black !important;
   }
   
   .global-btn:focus {
