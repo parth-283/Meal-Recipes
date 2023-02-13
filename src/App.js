@@ -19,6 +19,7 @@ import { useEffect } from "react";
 import ProtectedRoute from "./component/Routing/ProtectedRoute";
 import PublicRoute from "./component/Routing/PublicRoute";
 import Profile from "./component/Profile";
+import AddRecipes from "./component/AddRecipes";
 
 function App() {
   const [cookies, setCookie, removeCookie] = useCookies();
@@ -51,6 +52,7 @@ function App() {
           <Route path="/lunch" element={<Lunch />} />
           <Route path="/dessert" element={<Dessert />} />
           <Route path="/recipe" element={<Recipe />} />
+          <Route path="/addrecipe" element={<AddRecipes />} />
           <Route path="/recipe/:recipeId" element={<Recipe1 />} />
 
           <Route path="*" element={<Error404 />} />
