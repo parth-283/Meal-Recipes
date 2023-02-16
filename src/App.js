@@ -24,12 +24,6 @@ import AddRecipes from "./component/AddRecipes";
 function App() {
   const [cookies, setCookie, removeCookie] = useCookies();
 
-  // useEffect(() => {
-  //   console.log("====================================");
-  //   console.log("cookiessss", cookies);
-  //   console.log("====================================");
-  // }, [cookies]);
-
   return (
     <>
       <Routes>
@@ -38,7 +32,11 @@ function App() {
           element={<Header cookies={cookies} removeCookie={removeCookie} />}
         >
           <Route element={<ProtectedRoute cookies={cookies} />}>
-            <Route path="/profile"  element={<Profile cookies={cookies} />} />
+            <Route path="/profile" element={<Profile cookies={cookies} />} />
+            <Route
+              path="/addrecipe"
+              element={<AddRecipes cookies={cookies} />}
+            />
           </Route>
           <Route element={<PublicRoute cookies={cookies} />}>
             <Route path="/signup" element={<Signup />} />
@@ -52,7 +50,6 @@ function App() {
           <Route path="/lunch" element={<Lunch />} />
           <Route path="/dessert" element={<Dessert />} />
           <Route path="/recipe" element={<Recipe />} />
-          <Route path="/addrecipe" element={<AddRecipes />} />
           <Route path="/recipe/:recipeId" element={<Recipe1 />} />
 
           <Route path="*" element={<Error404 />} />
