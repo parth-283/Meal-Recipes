@@ -6,6 +6,7 @@ import {
   Container,
   Form,
   InputGroup,
+  Modal,
   ProgressBar,
   Row,
   Tab,
@@ -30,11 +31,12 @@ function AddRecipes({ cookies }) {
   const [user, setUser] = useState();
   const [recipeForm, setRecipeForm] = useState([]);
   const [userData, setUserData] = useState();
-  const [recipeSocialMedia, setRecipeSocialMedia] = useState({
-    socialMedia: "",
-  });
   const [now, setNow] = useState(25);
   const [key, setKey] = useState(1);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   useEffect(() => {
     userGet(setUserData);
@@ -71,9 +73,6 @@ function AddRecipes({ cookies }) {
     const value = e.target.value;
     setRecipeForm({ ...recipeForm, [key]: value });
   };
-  console.log("====================================");
-  console.log(recipeSocialMedia, recipeForm,user, "recipeFormrecipeForm");
-  console.log("====================================");
 
   return (
     <>
@@ -102,6 +101,7 @@ function AddRecipes({ cookies }) {
                     style={myStyle.bgImage}
                   >
                     <Form className="addrecipe-form-1 my-5">
+                      {/*  Recipe's Name & Category */}
                       <Row>
                         <Col>
                           <Form.Group className="mb-3">
@@ -117,7 +117,7 @@ function AddRecipes({ cookies }) {
                           </Form.Group>
                         </Col>
                         <Col>
-                          <Form.Group className="mb-3">
+                          <Form.Group className="">
                             <Form.Label className="recipe-form-label">
                               Category
                             </Form.Label>
@@ -137,6 +137,7 @@ function AddRecipes({ cookies }) {
                           </Form.Group>
                         </Col>
                       </Row>
+                      {/* Chef Name & Video Links */}
                       <Row>
                         <Col>
                           <Form.Group className="mb-3">
@@ -144,6 +145,7 @@ function AddRecipes({ cookies }) {
                               Chef Name
                             </Form.Label>
                             <Form.Control
+                              disabled
                               placeholder="Chef Name"
                               name="chefName"
                               value={`${user?.fname} ${user?.lname}`}
@@ -164,84 +166,66 @@ function AddRecipes({ cookies }) {
                           </Form.Group>
                         </Col>
                       </Row>
+                      {/* Social Media */}
                       <Row>
                         <Col>
                           <Row>
-                            <div key="checkbox" className="mb-3">
-                              <Form.Check
-                                type="checkbox"
-                                id={`check-api-$"checkbox"`}
-                              >
-                                <Form.Check.Input type="checkbox" isValid />
-                                <Form.Check.Label>{`Custom api "checkbox"`}</Form.Check.Label>
-                                <Form.Control.Feedback type="valid">
-                                  You did it!
-                                </Form.Control.Feedback>
-                              </Form.Check>
-                            </div>
-                            {/* <Form.Group className="mb-3">
+                            <Form.Group className="mb-3">
                               <Form.Label className="recipe-form-label">
                                 SocialMedia
                               </Form.Label>
-                              <Form.Select
-                                className="addrecipe-selectbox"
-                                defaultValue="Choose SocialMedia"
-                                name="socialMedia"
-                                onChange={(e) =>
-                                  setRecipeSocialMedia({
-                                    [e.target.name]: e.target.value,
-                                  })
-                                }
-                              >
-                                <option value="">Choose SocialMedia</option>
-                                <option value="faceBook">FaceBook</option>
-                                <option value="twiter">Twiter</option>
-                                <option value="instagram">Instagram</option>
-                              </Form.Select>
-                            </Form.Group> */}
-                            {/* <Col>
-                              <InputGroup className="mb-3 d-flex align-items-center">
-                                <Form.Control
-                                  className="me-3"
-                                  placeholder="Recipient's username"
-                                  aria-label="Recipient's username"
-                                  aria-describedby="basic-addon2"
-                                />
-                                <Button
-                                  variant="outline-secondary"
-                                  className="circul-btn"
-                                  id="button-addon2"
+                              <div className="addrecipe-socialMedia-div">
+                                <div
+                                  className="facebook-div"
+                                  onClick={(e) => handleShow(e)}
                                 >
-                                  <i className="bi bi-plus-lg"></i>
-                                </Button>
-                              </InputGroup>
-                            </Col> */}
-                          </Row>
-                          {/* {recipeSocialMedia?.socialMedia !== "" && (
-                            <Row>
-                              <div className="addrecipe-global-card recipe-socialMedia">
-                                <div className="recipe-socialMedia-heading">
-                                  <h2>
-                                    {recipeSocialMedia?.socialMedia.toUpperCase()}
-                                  </h2>
+                                  <i class="bi bi-facebook"></i>
                                 </div>
-                                <div>
-                                  <Row>
-                                    <Col>
-                                      <Form.Label className="recipe-form-label">
-                                        {recipeSocialMedia?.socialMedia} Link
-                                      </Form.Label>
-                                      <Form.Control
-                                        placeholder={`Enter ${recipeSocialMedia?.socialMedia} Link`}
-                                        name={recipeSocialMedia?.socialMedia}
-                                        onChange={(e) => handleRecipeForm(e)}
-                                      />
-                                    </Col>
-                                  </Row>
+                                <div className="instagram-div">
+                                  <i class="bi bi-instagram"></i>
+                                </div>
+                                <div className="twitter-div">
+                                  <i class="bi bi-twitter"></i>
                                 </div>
                               </div>
-                            </Row>
-                          )} */}
+                            </Form.Group>
+                            <Modal
+                              show={show}
+                              onHide={handleClose}
+                              className="socialMedia-modal"
+                            >
+                              <Modal.Header
+                                className="socialMedia-modal-header"
+                                closeButton
+                              >
+                                <Modal.Title>Social Media</Modal.Title>
+                              </Modal.Header>
+                              <Modal.Body>
+                                <Form.Group className="mb-3">
+                                  <Form.Label className="recipe-form-label">
+                                    FaceBook
+                                  </Form.Label>
+
+                                  <Form.Control
+                                    placeholder="FaceBook"
+                                    name="faceBook"
+                                    onChange={(e) => handleRecipeForm(e)}
+                                  />
+                                </Form.Group>{" "}
+                              </Modal.Body>
+                              <Modal.Footer>
+                                <Button
+                                  variant="secondary"
+                                  onClick={handleClose}
+                                >
+                                  Close
+                                </Button>
+                                <Button variant="primary" onClick={handleClose}>
+                                  Save Changes
+                                </Button>
+                              </Modal.Footer>
+                            </Modal>
+                          </Row>
                         </Col>
                       </Row>
                     </Form>

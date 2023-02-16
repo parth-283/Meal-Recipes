@@ -44,4 +44,69 @@
   border: 1px solid darkcyan !important;
   border-radius: 2rem !important;
   color: lightblue !important;
+  background: #008b8b2e !important;
+}
+
+.recipe-form-label {
+  color: lightcyan;
+  font-size: 17px;
+}
+
+.addrecipe-socialMedia-div {
+  display: flex;
+  justify-content: space-around;
+  /* background: #008b8b6b; */
+}
+
+.addrecipe-socialMedia-div > div {
+  border: 1px solid cyan;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20%;
+}
+
+.addrecipe-socialMedia-div > div:hover {
+  cursor: pointer;
+}
+
+.addrecipe-socialMedia-div > div > .bi {
+  color: whitesmoke;
+}
+
+.facebook-div {
+  background: rgb(59, 89, 152);
+}
+
+.instagram-div {
+  background: linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  ) !important;
+}
+
+.twitter-div {
+  background: #00acee;
+}
+
+.socialMedia-modal {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.socialMedia-modal > .modal-dialog > .modal-content {
+  background: #2f4f4fdb;
+  color: cadetblue;
+  width: 30rem;
+}
+
+.socialMedia-modal-header>button{
+
 }
