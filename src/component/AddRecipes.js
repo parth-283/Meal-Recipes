@@ -33,10 +33,12 @@ function AddRecipes({ cookies }) {
   const [userData, setUserData] = useState();
   const [now, setNow] = useState(25);
   const [key, setKey] = useState(1);
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState({ status: false });
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleClose = () => setShow({ ...show, status: false, name: "" });
+  const handleShow = ({ name }) => {
+    setShow({ ...show, status: true, name: name });
+  };
 
   useEffect(() => {
     userGet(setUserData);
@@ -73,6 +75,10 @@ function AddRecipes({ cookies }) {
     const value = e.target.value;
     setRecipeForm({ ...recipeForm, [key]: value });
   };
+
+  console.log("====================================");
+  console.log(recipeForm, "EEEEEEEEEEEEE");
+  console.log("====================================");
 
   return (
     <>
@@ -176,21 +182,33 @@ function AddRecipes({ cookies }) {
                               </Form.Label>
                               <div className="addrecipe-socialMedia-div">
                                 <div
-                                  className="facebook-div"
-                                  onClick={(e) => handleShow(e)}
+                                  className="facebook-div  socialmedia-box-shadow"
+                                  onClick={() =>
+                                    handleShow({ name: "facebook" })
+                                  }
                                 >
-                                  <i class="bi bi-facebook"></i>
+                                  <i className="bi bi-facebook"></i>
                                 </div>
-                                <div className="instagram-div">
-                                  <i class="bi bi-instagram"></i>
+                                <div
+                                  className="instagram-div socialmedia-box-shadow"
+                                  onClick={() =>
+                                    handleShow({ name: "instagram" })
+                                  }
+                                >
+                                  <i className="bi bi-instagram"></i>
                                 </div>
-                                <div className="twitter-div">
-                                  <i class="bi bi-twitter"></i>
+                                <div
+                                  className="twitter-div  socialmedia-box-shadow"
+                                  onClick={() =>
+                                    handleShow({ name: "twitter" })
+                                  }
+                                >
+                                  <i className="bi bi-twitter"></i>
                                 </div>
                               </div>
                             </Form.Group>
                             <Modal
-                              show={show}
+                              show={show?.status}
                               onHide={handleClose}
                               className="socialMedia-modal"
                             >
@@ -201,27 +219,31 @@ function AddRecipes({ cookies }) {
                                 <Modal.Title>Social Media</Modal.Title>
                               </Modal.Header>
                               <Modal.Body>
-                                <Form.Group className="mb-3">
+                                <Form.Group className="mb-3" onSubmit={(e) => handleRecipeForm(e)}>
                                   <Form.Label className="recipe-form-label">
-                                    FaceBook
+                                    {show?.name}
                                   </Form.Label>
 
                                   <Form.Control
-                                    placeholder="FaceBook"
-                                    name="faceBook"
-                                    onChange={(e) => handleRecipeForm(e)}
+                                    placeholder={show?.name}
+                                    name={show?.name}
+                                    // onChange={(e) => handleRecipeForm(e)}
                                   />
                                 </Form.Group>{" "}
                               </Modal.Body>
                               <Modal.Footer>
                                 <Button
-                                  variant="secondary"
+                                  className="m-2 w-auto global-btn"
                                   onClick={handleClose}
                                 >
-                                  Close
+                                  Cancel
                                 </Button>
-                                <Button variant="primary" onClick={handleClose}>
-                                  Save Changes
+                                <Button
+                                type="submit"
+                                  className="m-2 w-auto global-btn"
+                                  onClick={handleClose}
+                                >
+                                  Add
                                 </Button>
                               </Modal.Footer>
                             </Modal>
@@ -231,6 +253,7 @@ function AddRecipes({ cookies }) {
                     </Form>
                   </Card>
                 </Tab>
+                {/*Time & Ingredients*/}
                 <Tab
                   eventKey={2}
                   title="Time & Ingredients"
@@ -240,6 +263,7 @@ function AddRecipes({ cookies }) {
                     <h2>Time & Ingredients</h2>
                   </Card>
                 </Tab>
+                {/*Direction & Description*/}
                 <Tab
                   eventKey={3}
                   title="Direction & Description"
@@ -249,6 +273,7 @@ function AddRecipes({ cookies }) {
                     <h2>Direction & Description</h2>
                   </Card>
                 </Tab>
+                {/*Nutration & Preserving*/}
                 <Tab
                   eventKey={4}
                   title="Nutration & Preserving"

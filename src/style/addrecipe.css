@@ -107,6 +107,7 @@
   width: 30rem;
 }
 
-.socialMedia-modal-header>button{
-
+.socialmedia-box-shadow:hover {
+  box-shadow: rgb(54 158 175 / 85%) 0rem 0.25rem 1.375rem -0.0625rem,
+    rgb(43 126 151 / 85%) 0rem 0.125rem 1.25rem -0.0625rem;
 }
